@@ -23,8 +23,8 @@ public static class ConfigManager
 
             ConsoleWriter.Write("Config file created. Please fill it with the desired data.", ConsoleColor.Yellow);
             ConsoleWriter.Write("Press any key to continue...", ConsoleColor.Yellow);
-            Console.ReadKey();
-            Console.Clear();
+            // Console.ReadKey();
+            // Console.Clear();
 
             // ReSharper disable once TailRecursiveCall
             return await GetConfigAsync();
