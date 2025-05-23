@@ -39,7 +39,7 @@ jobs:
           sudo apt-get install -y build-essential libkrb5-dev make gcc libc-dev cmake llvm
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ matrix.framework }}
 
@@ -50,7 +50,7 @@ jobs:
         run: dotnet publish "${{ env.PROJECT_NAME }}/${{ env.PROJECT_NAME }}.csproj" -r ${{ matrix.target }} -c release -o "${{ github.workspace }}/builds/${{ matrix.framework }}/${{ matrix.target }}"
 
       - name: Upload ${{ matrix.target }} Build
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.PROJECT_NAME }}-${{ matrix.target }}-${{ matrix.framework }}
           path: ${{ github.workspace }}/builds/${{ matrix.framework }}/${{ matrix.target }}/*${{ env.PROJECT_NAME }}*
@@ -64,9 +64,9 @@ jobs:
       contents: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Download all builds
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           pattern: ${{ env.PROJECT_NAME }}-*-*
           path: builds
